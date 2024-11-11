@@ -15,6 +15,14 @@ export default {
       format: 'esm',
     },
   ],
-  plugins: [resolve(), commonjs(), typescript()],
+  plugins: [
+    resolve(),
+    commonjs(),
+    typescript({
+      tsconfig: './tsconfig.json',  // Specify tsconfig file explicitly
+      useTsconfigDeclarationDir: true,
+      include: ["src/**/*.ts", "src/**/*.tsx"],
+    }),
+  ],
   external: ['react', 'react-dom'],
 };
